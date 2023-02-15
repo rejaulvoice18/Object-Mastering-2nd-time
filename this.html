@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is not confused anymore</h1>
+    <script>
+        const myObj = {
+            name: 'kuddus ali',
+            getFullName: function(){
+                console.log(this);
+                return 'Mr. ' + this.name; // this diye ai object er name k bujachhe
+            }
+        }
+        // myObj.getFullName();
+        const anotherObj = {
+            name: 'Biddut Ali'
+        }
+
+        anotherObj.getFullName = myObj.getFullName; // ai vabe lekhar karone myObj er this ta anotherObj te chole geche
+        console.log(anotherObj.getFullName);
+        myObj.getFullName(); // bam a j aache tar context a run hobe.
+        anotherObj.getFullName(); // function ta jar context a run hobe tar value dekhabe
+
+        function add(a, b){
+            console.log(this);
+            return a + b;
+        }
+        add(12, 13);// bam j thake tar context a run hobe, function add ar bam a kichu nai tai window hobe. man a global context
+
+        anotherObj.sum = add;
+        anotherObj.sum(); // bam a anotherObj aache er jonno anotherObj ar context uno jaye run hobe
+
+        //kar context a run hochhe bujte hobe
+    </script>
+</body>
+</html>
